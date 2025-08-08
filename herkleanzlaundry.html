@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HerKleanzLaundry - Professional Laundry Service & Pickup</title>
+    <meta name="description" content="Professional laundry service with free pickup and delivery. Expert cleaning for all your clothing needs. Contact us via WhatsApp for instant service.">
+    <meta property="og:title" content="HerKleanzLaundry - Professional Laundry Service">
+    <meta property="og:description" content="Professional laundry service with free pickup and delivery. Expert cleaning for all your clothing needs.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background-color: #f8fafc;
+        }
+
+        /* Color variables */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #6366f1;
+            --accent: #06b6d4;
+            --whatsapp: #25d366;
+            --whatsapp-dark: #20b858;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+        }
+
+        /* Utility classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background-color: var(--slate-100);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            .grid-cols-2,
+            .grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .md-grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .md-grid-cols-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg-grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .lg-grid-cols-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--slate-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--slate-700);
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: white;
+            border-top: 1px solid var(--slate-200);
+            padding: 1rem;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem;
+            color: var(--slate-700);
+            text-decoration: none;
+            border-radius: 0.5rem;
+        }
+
+        .mobile-menu a:hover {
+            background-color: var(--slate-100);
+            color: var(--primary);
+        }
+
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .hero-image {
+            margin-top: 3rem;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+            }
+            .hero h1 {
+                font-size: 4rem;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--slate-600);
+            margin-bottom: 4rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card {
+            background: var(--slate-50);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--slate-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.125rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--slate-50);
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding: 1.5rem;
+        }
+
+        .before-after img {
+            width: 100%;
+            height: 12rem;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+            padding-top: 0;
+        }
+
+        .portfolio-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--slate-800);
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-description {
+            color: var(--slate-600);
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--slate-500);
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            color: var(--slate-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .check-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--whatsapp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .owner-card {
+            background: var(--slate-50);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .owner-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .owner-info h4 {
+            font-weight: 600;
+            color: var(--slate-800);
+        }
+
+        .owner-info p {
+            color: var(--slate-600);
+            font-size: 0.875rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--slate-50);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--slate-600);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: var(--slate-800);
+        }
+
+        .author-info p {
+            font-size: 0.875rem;
+            color: var(--slate-500);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: var(--whatsapp);
+            background: linear-gradient(45deg, rgba(37,211,102,0.1), rgba(37,211,102,0.05));
+            border: 1px solid rgba(37,211,102,0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--slate-700);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--slate-200);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        @media (min-width: 1024px) {
+            .contact-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--slate-800);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--slate-700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--slate-700);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+        }
+
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            background: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .whatsapp-float a:hover {
+            background: var(--whatsapp-dark);
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--whatsapp);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            70% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">HerKleanzLaundry</div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20laundry%20pickup" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Quick Pickup
+                </a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" onclick="closeMobileMenu()">Home</a>
+            <a href="#services" onclick="closeMobileMenu()">Services</a>
+            <a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a>
+            <a href="#about" onclick="closeMobileMenu()">About</a>
+            <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+            <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20laundry%20pickup" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                Quick Pickup
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Professional Laundry Service <span style="color: var(--accent);">Delivered to You</span></h1>
+                    <p>Experience premium laundry care with free pickup and delivery. Our expert team handles everything from everyday clothes to delicate fabrics.</p>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20laundry%20pickup" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Schedule Pickup
+                        </a>
+                        <a href="#services" class="btn btn-white">View Services</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24h</div>
+                            <div class="stat-label">Turnaround</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Professional laundry service worker">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Professional cleaning services tailored to your needs. From everyday laundry to specialized care.</p>
+            </div>
+            <div class="grid md-grid-cols-2 lg-grid-cols-3">
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: var(--primary);">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 class="service-title">Regular Laundry</h3>
+                    <p class="service-description">Professional washing and folding of everyday clothes. Fresh, clean, and perfectly organized.</p>
+                    <div class="service-price">Starting at $15</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: var(--accent);">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <h3 class="service-title">Dry Cleaning</h3>
+                    <p class="service-description">Specialized dry cleaning for delicate fabrics, suits, and formal wear with expert care.</p>
+                    <div class="service-price">Starting at $25</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: var(--whatsapp);">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="service-title">Pickup & Delivery</h3>
+                    <p class="service-description">Free pickup and delivery service within the city. Schedule via WhatsApp for convenience.</p>
+                    <div class="service-price">Free Service</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: var(--secondary);">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="service-title">Express Service</h3>
+                    <p class="service-description">Need it fast? Our express service delivers clean clothes within 12 hours.</p>
+                    <div class="service-price">+50% Regular Price</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: #9333ea;">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="service-title">Household Items</h3>
+                    <p class="service-description">Bedding, curtains, and other household textiles cleaned with specialized care.</p>
+                    <div class="service-price">Starting at $20</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: #f59e0b;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="service-title">Premium Care</h3>
+                    <p class="service-description">Special treatment for luxury items and delicate fabrics with premium cleaning products.</p>
+                    <div class="service-price">Starting at $35</div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 4rem;">
+                <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i>
+                    Get Custom Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Our Work Portfolio</h2>
+                <p class="section-subtitle">See the quality of our work through before and after transformations and customer stories.</p>
+            </div>
+            <div class="grid md-grid-cols-2">
+                <div class="portfolio-card">
+                    <div class="before-after">
+                        <div>
+                            <h4 style="font-size: 0.875rem; font-weight: 500; color: var(--slate-500); margin-bottom: 0.5rem;">BEFORE</h4>
+                            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="Wrinkled clothes before cleaning">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 0.875rem; font-weight: 500; color: var(--slate-500); margin-bottom: 0.5rem;">AFTER</h4>
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="Clean folded clothes after service">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Business Professional Makeover</h3>
+                        <p class="portfolio-description">Complete transformation of a week's worth of business attire. Our professional dry cleaning and pressing service restored these shirts to pristine condition.</p>
+                        <div class="portfolio-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock" style="color: var(--accent);"></i>
+                                <span>24 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-star" style="color: #fbbf24;"></i>
+                                <span style="font-weight: 500; color: var(--slate-700);">5.0 rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="before-after">
+                        <div>
+                            <h4 style="font-size: 0.875rem; font-weight: 500; color: var(--slate-500); margin-bottom: 0.5rem;">BEFORE</h4>
+                            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="Wrinkled clothes before cleaning">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 0.875rem; font-weight: 500; color: var(--slate-500); margin-bottom: 0.5rem;">AFTER</h4>
+                            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="Clean folded clothes after service">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Family Laundry Complete</h3>
+                        <p class="portfolio-description">A full family's weekly laundry including stain removal and fabric softening. Every piece returned fresh, clean, and perfectly folded.</p>
+                        <div class="portfolio-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock" style="color: var(--accent);"></i>
+                                <span>48 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-star" style="color: #fbbf24;"></i>
+                                <span style="font-weight: 500; color: var(--slate-700);">4.9 rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Professional laundry equipment" style="width: 100%; height: 16rem; object-fit: cover;">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">State-of-the-Art Equipment</h3>
+                        <p class="portfolio-description">Behind the scenes look at our professional-grade washing machines and eco-friendly cleaning processes that ensure the best care for your garments.</p>
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <div class="meta-item">
+                                <i class="fas fa-leaf" style="color: #22c55e;"></i>
+                                <span>Eco-Friendly</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-shield-alt" style="color: var(--primary);"></i>
+                                <span>Gentle Care</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Laundry delivery service" style="width: 100%; height: 16rem; object-fit: cover;">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Contactless Delivery</h3>
+                        <p class="portfolio-description">Safe and convenient delivery service right to your doorstep. Schedule pickup and delivery through WhatsApp for a seamless experience.</p>
+                        <div style="margin-top: 1rem;">
+                            <a href="https://wa.me/1234567890?text=I%27d%20like%20to%20schedule%20a%20pickup" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                Schedule Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">About HerKleanzLaundry</h2>
+                    <p class="about-text">Founded in 2018, HerKleanzLaundry has been serving the community with professional laundry services that combine traditional care with modern convenience. Our mission is to give you more time for what matters most by taking care of your laundry needs.</p>
+                    <p class="about-text">We use eco-friendly cleaning products and state-of-the-art equipment to ensure your clothes receive the best possible care while minimizing our environmental impact.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="check-icon">
+                                <i class="fas fa-check" style="font-size: 0.75rem;"></i>
+                            </div>
+                            <span>Licensed and insured professional service</span>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon">
+                                <i class="fas fa-check" style="font-size: 0.75rem;"></i>
+                            </div>
+                            <span>Eco-friendly cleaning products and processes</span>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon">
+                                <i class="fas fa-check" style="font-size: 0.75rem;"></i>
+                            </div>
+                            <span>Free pickup and delivery within city limits</span>
+                        </li>
+                        <li class="feature-item">
+                            <div class="check-icon">
+                                <i class="fas fa-check" style="font-size: 0.75rem;"></i>
+                            </div>
+                            <span>24/7 customer support via WhatsApp</span>
+                        </li>
+                    </ul>
+                    <div class="owner-card">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Business owner portrait" class="owner-avatar">
+                        <div class="owner-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Founder & Owner</p>
+                            <p>15+ years in textile care</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Professional laundry facility interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real feedback from satisfied customers</p>
+            </div>
+            <div class="grid md-grid-cols-3">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"HerKleanzLaundry has been a lifesaver for our busy family. The pickup and delivery service is so convenient, and our clothes always come back spotless and perfectly folded."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b647?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60" alt="Customer testimonial" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Emily Chen</h4>
+                            <p>Working Mom</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The quality of their dry cleaning is exceptional. My business suits have never looked better, and the WhatsApp booking system makes scheduling so easy."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60" alt="Customer testimonial" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Business Executive</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"I love their eco-friendly approach to cleaning. It's great to know my clothes are getting excellent care while also being environmentally responsible."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60" alt="Customer testimonial" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Jessica Park</h4>
+                            <p>Environmental Consultant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Ready to experience premium laundry service? Contact us today for pickup scheduling or any questions.</p>
+            </div>
+            <div class="contact-content">
+                <div>
+                    <h3 style="font-size: 1.5rem; font-weight: 600; color: var(--slate-800); margin-bottom: 2rem;">Contact Information</h3>
+                    
+                    <div class="contact-info">
+                        <div class="contact-method">
+                            <div class="contact-icon" style="background-color: var(--whatsapp);">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; color: var(--slate-800);">WhatsApp (Preferred)</h4>
+                                <p style="color: var(--slate-600); margin-bottom: 1rem;">Instant pickup scheduling</p>
+                                <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20laundry%20pickup" class="btn btn-whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                    Start Chat
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div class="contact-method">
+                            <div class="contact-icon" style="background-color: var(--primary);">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; color: var(--slate-800);">Phone</h4>
+                                <p style="color: var(--slate-600);">(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon" style="background-color: var(--accent);">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; color: var(--slate-800);">Email</h4>
+                                <p style="color: var(--slate-600);">hello@herkleanzlaundry.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon" style="background-color: var(--secondary);">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; color: var(--slate-800);">Service Area</h4>
+                                <p style="color: var(--slate-600);">Downtown & surrounding areas</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon" style="background-color: #9333ea;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; color: var(--slate-800);">Business Hours</h4>
+                                <p style="color: var(--slate-600);">Mon-Sat: 7AM-8PM</p>
+                                <p style="color: var(--slate-600);">Sun: 9AM-6PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.5rem; font-weight: 600; color: var(--slate-800); margin-bottom: 2rem;">Send Us a Message</h3>
+                    
+                    <form class="contact-form" onsubmit="handleContactForm(event)">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="regular">Regular Laundry</option>
+                                <option value="dry-cleaning">Dry Cleaning</option>
+                                <option value="express">Express Service</option>
+                                <option value="household">Household Items</option>
+                                <option value="premium">Premium Care</option>
+                                <option value="quote">Custom Quote</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Tell us about your laundry needs..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <p style="color: var(--slate-600); margin-bottom: 1rem;">Need immediate pickup?</p>
+                        <a href="https://wa.me/1234567890?text=Hi%2C%20I%20need%20immediate%20laundry%20pickup" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp Us Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HerKleanzLaundry</h3>
+                    <p>Professional laundry service with free pickup and delivery. Your trusted partner for all clothing care needs since 2018.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/1234567890" class="social-link" style="background-color: var(--whatsapp);">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-links">
+                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-phone" style="color: var(--accent);"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-envelope" style="color: var(--accent);"></i>
+                            <span>hello@herkleanzlaundry.com</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i>
+                            <span>WhatsApp Available</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-clock" style="color: var(--accent);"></i>
+                            <span>Mon-Sat: 7AM-8PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HerKleanzLaundry. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20laundry%20pickup">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn i');
+            
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                menuBtn.classList.replace('fa-bars', 'fa-times');
+            } else {
+                menuBtn.classList.replace('fa-times', 'fa-bars');
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn i');
+            
+            mobileMenu.classList.remove('active');
+            menuBtn.classList.replace('fa-times', 'fa-bars');
+        }
+
+        // Contact form handler
+        function handleContactForm(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const service = formData.get('service');
+            const message = formData.get('message');
+
+            // Basic validation
+            if (!name || !email || !service || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Simulate form submission
+            alert('Thank you for your message! We will contact you soon via WhatsApp or email.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                closeMobileMenu();
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'white';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
